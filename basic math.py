@@ -222,9 +222,21 @@ class MAPHY:
         return self.floor(x + 0.5)
       else:
         return self.ceil(x - 0.5)
+    def log(self,x):
+     if x <= 0:
+        raise ValueError("x must be greater than 0")
+
+     z = (x - 1) / (x + 1)
+
+     result = 0.0
+     term = z
+
+     for n in range(100):
+        result += term / (2 * n + 1)
+        term *= z * z
+
+     return 2 * result
 
 
-
-    
-
-        
+lo=MAPHY()
+print(lo.log(10))
